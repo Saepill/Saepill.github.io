@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project | Daye Kim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap-wide bar">
+      <a class="logo" href="index.html">Daye Kim</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="CV.pdf">CV</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 1 3h-2l1-3zm0 20-1-3h2l-1 3zM2 12l3-1v2l-3-1zm20 0-3 1v-2l3 1zM4.9 4.9l2.8 1.4-1.4 1.4-1.4-2.8zm14.2 14.2-2.8-1.4 1.4-1.4 1.4 2.8zM4.9 19.1l1.4-2.8 1.4 1.4-2.8 1.4zM19.1 4.9l-1.4 2.8-1.4-1.4 2.8-1.4z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap-wide" id="project"></main>
+
+  <footer>
+    <div class="wrap">© 2026 Daye Kim</div>
+  </footer>
+
+  <script src="js/projects.js"></script>
+  <script>
+    var id = new URLSearchParams(location.search).get("id");
+    var i = projects.findIndex(function (p) { return p.id === id; });
+    var main = document.getElementById("project");
+
+    if (i < 0) {
+      main.innerHTML = '<h1 class="page-title">Project not found</h1>' +
+        '<p class="page-sub"><a href="projects.html">← Back to all projects</a></p>';
+    } else {
+      var p = projects[i];
+      document.title = p.title + " | Daye Kim";
+
+      var calendar = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm-1 8v10h12V10H6z"/></svg>';
+      var tag = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h9l9 9-9 9-9-9V3zm4.5 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>';
+
+      var images = (p.images || []).slice(0, 3);
+      var gallery = images.length
+        ? '<div class="gallery n' + images.length + '">' + images.map(function (src) {
+            return '<a href="' + src + '" target="_blank" rel="noopener"><img src="' + src + '" alt="' + p.title + '"></a>';
+          }).join("") + '</div>'
+        : '<div style="height:28px"></div>';
+
+      var facts = (p.facts || []).map(function (f) {
+        return '<dt>' + f[0] + '</dt><dd>' + f[1] + '</dd>';
+      }).join("");
+
+      var links = (p.links || []).length
+        ? '<div class="btn-links">' + p.links.map(function (l) {
+            return '<a href="' + l.url + '" target="_blank" rel="noopener">' + l.label + ' ↗</a>';
+          }).join("") + '</div>'
+        : '';
+
+      // Strings starting with "- " become bullet points; consecutive bullets share one list.
+      var overview = "", inList = false;
+      (p.overview || []).forEach(function (line) {
+        var bullet = line.indexOf("- ") === 0;
+        if (bullet && !inList) { overview += "<ul>"; inList = true; }
+        if (!bullet && inList) { overview += "</ul>"; inList = false; }
+        overview += bullet ? "<li>" + line.slice(2) + "</li>" : "<p>" + line + "</p>";
+      });
+      if (inList) overview += "</ul>";
+
+      var videos = (p.videos || []).length
+        ? '<section class="videos"><h2>Videos</h2><div class="video-grid n' + Math.min(p.videos.length, 3) + '">' +
+            p.videos.map(function (v) {
+              return '<div><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/' + v.id +
+                '" title="' + v.caption + '" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>' +
+                '<p class="video-caption">' + v.caption + '</p></div>';
+            }).join("") + '</div></section>'
+        : '';
+
+      var prev = projects[i - 1], next = projects[i + 1];
+      var pager = '<nav class="pager">' +
+        (prev ? '<a class="prev" href="project.html?id=' + prev.id + '"><small>← Previous</small>' + prev.title + '</a>' : '') +
+        (next ? '<a class="next" href="project.html?id=' + next.id + '"><small>Next →</small>' + next.title + '</a>' : '') +
+        '</nav>';
+
+      main.innerHTML =
+        '<a class="back" href="projects.html">← All projects</a>' +
+        '<h1 class="detail-title">' + p.title + '</h1>' +
+        '<div class="meta"><span>' + calendar + p.year + '</span><span>' + tag + (p.tags || []).join(" / ") + '</span></div>' +
+        (p.award ? '<p class="detail-award"><span class="award">' + p.award + '</span></p>' : '') +
+        gallery +
+        '<div class="detail-cols">' +
+          '<div><h2>About Project</h2><dl class="facts">' + facts + '</dl>' + links + '</div>' +
+          '<div class="overview"><h2>Overview</h2>' + overview + '</div>' +
+        '</div>' +
+        videos + pager;
+    }
+  </script>
+</body>
+</html>
