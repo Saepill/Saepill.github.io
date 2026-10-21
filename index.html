@@ -1,13 +1,363 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Saepill</title>
+  <title>Daye Kim</title>
+  <meta name="description" content="Daye Kim — M.S. student at Soongsil University researching XR, social VR, virtual entertainment, and avatar embodiment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfdfc;
+      --text: #1f2328;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #1f4e79;
+      --award: #583896;
+      --gold: #d69e18;
+      --chip: #eef3f8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #14171b;
+        --text: #e6e8eb;
+        --muted: #9aa3ae;
+        --line: #2b3138;
+        --accent: #7db3e3;
+        --award: #b89cf0;
+        --gold: #f0bf4c;
+        --chip: #1e2731;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #14171b;
+      --text: #e6e8eb;
+      --muted: #9aa3ae;
+      --line: #2b3138;
+      --accent: #7db3e3;
+      --award: #b89cf0;
+      --gold: #f0bf4c;
+      --chip: #1e2731;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 "Source Serif 4", Georgia, serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 14px;
+    }
+    nav .wrap { display: flex; gap: 18px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; white-space: nowrap; }
+    nav a { color: var(--muted); }
+    nav a:hover { color: var(--accent); text-decoration: none; }
+
+    header { padding: 56px 0 28px; text-align: center; }
+    h1 { font: 700 40px/1.15 Inter, system-ui, sans-serif; margin: 0 0 10px; letter-spacing: -0.02em; }
+    .affil { color: var(--muted); margin: 0 0 18px; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; font-family: Inter, system-ui, sans-serif; font-size: 14px; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    }
+    .links a:hover { border-color: var(--accent); text-decoration: none; }
+    .links svg { width: 15px; height: 15px; fill: currentColor; }
+
+    section { padding: 26px 0 10px; border-top: 1px solid var(--line); scroll-margin-top: 50px; }
+    h2 { font: 700 20px/1.3 Inter, system-ui, sans-serif; margin: 0 0 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    h2 small { font: 400 13px Inter, system-ui, sans-serif; color: var(--muted); }
+    h3 { font: 600 15px Inter, system-ui, sans-serif; margin: 20px 0 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .tagline { font-weight: 600; margin: 0 0 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; font-family: Inter, system-ui, sans-serif; font-size: 13px; }
+    .chips li { background: var(--chip); color: var(--accent); padding: 4px 10px; border-radius: 6px; }
+
+    .entry { display: grid; grid-template-columns: 130px 1fr; gap: 4px 18px; margin-bottom: 16px; }
+    .date { color: var(--muted); font-family: Inter, system-ui, sans-serif; font-size: 14px; padding-top: 2px; }
+    .entry p { margin: 0; }
+    .loc { color: var(--muted); }
+    .entry ul { margin: 6px 0 0; padding-left: 1.1em; }
+    .entry li { margin-bottom: 2px; }
+
+    .pub .title { color: var(--accent); font-weight: 600; }
+    .pub .authors b { color: var(--text); }
+    .pub .venue { font-style: italic; color: var(--muted); }
+    .label {
+      display: inline-block; min-width: 38px; text-align: center;
+      font: 600 12px Inter, system-ui, sans-serif;
+      border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; color: var(--muted);
+    }
+
+    .award { color: var(--award); font-weight: 600; }
+    .award::before { content: "🏅 "; }
+
+    footer { border-top: 1px solid var(--line); padding: 20px 0 40px; color: var(--muted); font: 13px Inter, system-ui, sans-serif; text-align: center; }
+
+    @media (max-width: 600px) {
+      header { padding-top: 36px; }
+      h1 { font-size: 32px; }
+      .entry { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Saepill</h1>
-  <p>Homepage under construction.</p>
-  <a href="CV.pdf">CV (PDF)</a>
+  <nav>
+    <div class="wrap">
+      <a href="#research">Research</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#talks">Talks</a>
+      <a href="#teaching">Teaching &amp; Service</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header>
+      <h1>Daye Kim</h1>
+      <p class="affil">M.S. Student, Department of Metaverse and Culture Contents, Soongsil University</p>
+      <div class="links">
+        <a href="mailto:kimdyae@soongsil.ac.kr">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2v.5l8 5 8-5V7H4zm16 2.85-8 5-8-5V17h16V9.85z"/></svg>
+          kimdyae@soongsil.ac.kr
+        </a>
+        <a href="https://scholar.google.com/citations?user=mI-5qngAAAAJ">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zm-6 9.18v4L12 20l6-3.82v-4L12 15.5l-6-3.32z"/></svg>
+          Google Scholar
+        </a>
+        <a href="CV.pdf">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6V2zm8 1.5V8h4.5L14 3.5zM8 12h8v1.5H8V12zm0 3h8v1.5H8V15zm0 3h5v1.5H8V18z"/></svg>
+          CV (PDF)
+        </a>
+      </div>
+    </header>
+
+    <section id="research">
+      <h2>Research Interests</h2>
+      <p class="tagline">Expanding how people enjoy, create, learn, and connect within and beyond the physical world.</p>
+      <ul class="chips">
+        <li>XR (VR/AR)</li>
+        <li>Social VR</li>
+        <li>Virtual Entertainment</li>
+        <li>AI-Supported Creativity</li>
+        <li>Avatar Embodiment</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="date">2025 – Present</div>
+        <div>
+          <p><b>Soongsil University</b>, <span class="loc">Seoul, Korea</span></p>
+          <p>Master of Science in Engineering, Department of Metaverse and Culture Contents</p>
+          <p>Advisor: Jungjin Lee</p>
+          <p>Thesis: <i>VTuber's Atelier: The Design Space, Challenges, and Opportunities for VTubing</i></p>
+          <p>Committee: Jungjin Lee, Jinho Park, Jung-hwan Sung</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2019 – 2024</div>
+        <div>
+          <p><b>Soongsil University</b>, <span class="loc">Seoul, Korea</span></p>
+          <p>Bachelor of Engineering, The Global School of Media</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Research Experience</h2>
+      <div class="entry">
+        <div class="date">Jan 2023 – Present</div>
+        <div>
+          <p><b><a href="https://33lab.notion.site/">Enhanced Experience Lab (33Lab)</a></b>, Soongsil University, <span class="loc">Seoul, Korea</span></p>
+          <p>Research Assistant with Jungjin Lee</p>
+          <p>Research on creator and audience experiences in virtual entertainment and embodied interaction in social VR</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications <small>* indicates equal contribution</small></h2>
+
+      <h3>International Papers</h3>
+      <div class="entry pub">
+        <div class="date"><span class="label">c.3</span></div>
+        <div>
+          <p><a class="title" href="https://doi.org/10.1145/3706598.3714107">VTuber's Atelier: The Design Space, Challenges, and Opportunities for VTubing</a></p>
+          <p class="authors"><b>Daye Kim</b>*, Sebin Lee*, Yoonseo Jun, Yujin Shin, and Jungjin Lee.</p>
+          <p class="venue">CHI 2025: ACM CHI Conference on Human Factors in Computing Systems</p>
+        </div>
+      </div>
+      <div class="entry pub">
+        <div class="date"><span class="label">c.2</span></div>
+        <div>
+          <p><a class="title" href="https://doi.org/10.1145/3746027.3755327">Bring the VibeOn: Designing a Multimodal Interface for Shared Emotional Experiences in Live-streamed Concerts</a></p>
+          <p class="authors">Gyeongjin Kim, Sebin Lee, <b>Daye Kim</b>, Jungjin Lee, and Minju Kim.</p>
+          <p class="venue">ACM MM 2025: ACM International Conference on Multimedia</p>
+        </div>
+      </div>
+      <div class="entry pub">
+        <div class="date"><span class="label">c.1</span></div>
+        <div>
+          <p><a class="title" href="https://doi.org/10.1145/3581783.3612094">The Effects of Viewing Formats and Song Genres on Audience Experiences in Virtual Avatar Concerts</a></p>
+          <p class="authors">Sebin Lee*, <b>Daye Kim</b>*, and Jungjin Lee.</p>
+          <p class="venue">ACM MM 2023: ACM International Conference on Multimedia</p>
+        </div>
+      </div>
+
+      <h3>Domestic Papers</h3>
+      <div class="entry pub">
+        <div class="date"><span class="label">d.3</span></div>
+        <div>
+          <p><a class="title" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12745890">AI-Based Mobile Service Design for Improving Conflict Experiences in Romantic Relationships</a></p>
+          <p class="authors">Seeun Hyun, Yoohyun Kim, Sion Lee, Yunsik Cho, <b>Daye Kim</b>, and Jungjin Lee.</p>
+          <p class="venue">HCI Korea 2026: Proceedings of HCI Korea 2026</p>
+        </div>
+      </div>
+      <div class="entry pub">
+        <div class="date"><span class="label">d.2</span></div>
+        <div>
+          <p><a class="title" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12745970">Designing a Decision Support System for Structuring Judgment Processes in Study Abroad Preparation</a></p>
+          <p class="authors">Jisu Kim, Nharyeong Kim, Chaeeun Baek, <b>Daye Kim</b>, and Jungjin Lee.</p>
+          <p class="venue">HCI Korea 2026: Proceedings of HCI Korea 2026</p>
+        </div>
+      </div>
+      <div class="entry pub">
+        <div class="date"><span class="label">d.1</span></div>
+        <div>
+          <p><a class="title" href="https://doi.org/10.15701/kcgs.2024.30.3.23">Wishbowl: Production Case Study of Music Video and Immersive Interactive Concert of Virtual Band Idol Verse'day</a></p>
+          <p class="authors">Sebin Lee*, Gyeongjin Kim*, <b>Daye Kim</b>*, and Jungjin Lee.</p>
+          <p class="venue">JKCGS: Journal of the Korea Computer Graphics Society, 30(3)</p>
+        </div>
+      </div>
+
+      <h3>Under Review</h3>
+      <div class="entry pub">
+        <div class="date"><span class="label">u.1</span></div>
+        <div>
+          <p class="title">Manuscript on Embodiment and Self-Expression in VR Dance Education</p>
+          <p class="authors">Yoonseo Jun*, <b>Daye Kim</b>*, Sebin Lee, and Jungjin Lee.</p>
+          <p class="venue">Under review</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <h3>Creative Projects &amp; Leadership</h3>
+      <div class="entry">
+        <div class="date">Jul 2022 – Jul 2025</div>
+        <div>
+          <p><b>Virtual Idol “Verse'day”</b> — Founder &amp; Creative Director</p>
+          <p><span class="award">Best Project Award (Music)</span>, Korea Creative Content Agency (KOCCA), 2024</p>
+          <ul>
+            <li>Founded and led a five-member production team for the virtual idol group.</li>
+            <li>Secured ~$30,000 in government grants from KOCCA through Content Impact 2022 and New Content Academy 2024, with follow-on funding as a Best Project.</li>
+            <li>Released three albums and music videos (<a href="https://www.youtube.com/watch?v=mkVMj3ZbYco"><i>Feel Alive</i></a>, <a href="https://www.youtube.com/watch?v=h6GKyl106Xs"><i>Wishbowl</i></a>, <a href="https://www.youtube.com/watch?v=v0qFvmvjZec"><i>Wavelet</i></a>); directed the group's concept and creative production.</li>
+            <li>Presented and exhibited the <a href="https://www.youtube.com/watch?v=HdHAw4pW0os"><i>Wishbowl</i> interactive concert</a> [d.1] at the New Content Academy Showcase 2024 and Character Licensing Fair 2024 (COEX).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Industry &amp; Government Projects</h3>
+      <div class="entry">
+        <div class="date">2024 – Present</div>
+        <div>
+          <p><b>UX Services for Passengers' Cultural Content Experiences in Mobility</b></p>
+          <p>Government R&amp;D project funded by KOCCA</p>
+          <p>Conducted large-scale user evaluations (N=100, N=300) and qualitative analysis of participant responses.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Jan 2025 – Mar 2025</div>
+        <div>
+          <p><b>User Research on Investment Behaviors of Korean Soldiers</b></p>
+          <p>Industry project with a securities company</p>
+          <p>Designed survey questionnaires; conducted and analyzed focus group interviews.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <h2>Presentations &amp; Invited Talks</h2>
+      <div class="entry">
+        <div class="date">Jan 2026</div>
+        <div>
+          <p><i>SIGCHI Korea Invited Papers Workshop at HCI Korea 2026</i> — Invited presentation.</p>
+          <p><span class="award">Honorable Mention Presentation Award</span></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Aug 2025</div>
+        <div><p><i>2025 Virtual Convergence Graduate School Symposium</i> — Oral presentation.</p></div>
+      </div>
+      <div class="entry">
+        <div class="date">May 2025</div>
+        <div><p><i>EnterTech Study Club</i> — Invited talk.</p></div>
+      </div>
+      <div class="entry">
+        <div class="date">Apr 2025</div>
+        <div><p><i>CHI 2025</i> — Oral presentation.</p></div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching &amp; Service</h2>
+      <div class="entry">
+        <div class="date">Fall 2025, Fall 2026</div>
+        <div>
+          <p><b>Teaching Assistant</b></p>
+          <p>Human-Computer Interaction, Soongsil University</p>
+          <ul>
+            <li>Mentored seven undergraduate teams in a user-centered design course, providing weekly feedback from initial concept to functional prototype.</li>
+            <li>Guided two teams to publish their projects at HCI Korea 2026 [d.2, d.3].</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div><p><b>Reviewer</b>, ACM CHI 2026</p></div>
+      </div>
+      <div class="entry">
+        <div class="date">2023, 2024</div>
+        <div><p><b>Student Volunteer</b>, Korea Computer Graphics Society (KCGS) Conference</p></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="entry">
+        <div class="date">Programming</div>
+        <div><p>Python, C</p></div>
+      </div>
+      <div class="entry">
+        <div class="date">Tools</div>
+        <div><p>Unity, Figma, Photoshop, Premiere Pro, Atlas.ti</p></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">© 2026 Daye Kim · Last updated: October 2026</div>
+  </footer>
 </body>
 </html>
