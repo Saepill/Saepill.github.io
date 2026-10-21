@@ -123,17 +123,15 @@ h3 { font: 600 15px var(--sans); margin: 20px 0 10px; color: var(--muted); text-
 footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0 40px; color: var(--muted); font: 13px var(--sans); text-align: center; }
 
 /* ---------- Home intro ---------- */
-.intro { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: center; padding: 56px 0 40px; }
+.intro { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; padding: 56px 0 40px; }
 .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow); }
-.intro h1 { margin-bottom: 6px; }
+.intro h1 { grid-column: 1 / -1; margin: 0 0 -14px; }
 .intro .affil { margin-bottom: 14px; font-family: var(--sans); font-size: 15px; }
 .bio { margin: 0 0 18px; }
 .links.left { justify-content: flex-start; }
 
-.vision { text-align: center; padding: 36px 0 32px; }
-.vision-label { font: 600 13px var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; }
-.vision-text { font: italic 600 24px/1.4 "Source Serif 4", Georgia, serif; max-width: 640px; margin: 0 auto 18px; color: var(--accent); }
-.vision .chips { justify-content: center; }
+.intro-vision { font: italic 600 19px/1.45 "Source Serif 4", Georgia, serif; color: var(--accent); margin: 0 0 12px; }
+.intro-chips { margin-bottom: 18px; }
 
 .news { list-style: none; padding: 0; margin: 0; }
 .news li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 6px 0; }
@@ -142,6 +140,30 @@ footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0 40
 #projects .project-grid { gap: 18px; }
 #projects .card .name { font-size: 15px; }
 #projects .card .desc { font-size: 14px; }
+
+/* ---------- Publication cards ---------- */
+.pub-card {
+  display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; margin-bottom: 14px; box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.pub-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.pub-thumb { aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: var(--chip); }
+.pub-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pub-thumb .placeholder { font-size: 16px; }
+.pub-body p { margin: 0; }
+.pub-title { font: 600 16px/1.4 var(--sans); margin-bottom: 6px !important; }
+.pub-title a { color: var(--text); }
+.pub-title a:hover { color: var(--accent); text-decoration: none; }
+.pub-authors { font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.pub-authors b { color: var(--text); }
+.pub-venue { font-size: 14px; font-style: italic; color: var(--muted); }
+.pub-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; font: 600 11.5px var(--sans); letter-spacing: 0.04em; text-transform: uppercase; }
+.pub-tags .badge { background: var(--accent); color: var(--bg); padding: 3px 8px; border-radius: 5px; }
+.pub-tags .badge.muted { background: var(--chip); color: var(--muted); }
+.pub-tags .tag-link { border: 1px solid var(--line); color: var(--muted); padding: 2px 8px; border-radius: 5px; }
+.pub-tags .tag-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
 
 /* ---------- Projects grid ---------- */
 .page-title { font: 700 36px/1.2 var(--sans); text-align: center; margin: 48px 0 8px; letter-spacing: -0.02em; }
@@ -222,10 +244,13 @@ footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0 40
   .entry { grid-template-columns: 1fr; gap: 2px; }
   .intro { grid-template-columns: 1fr; gap: 20px; padding-top: 32px; text-align: center; }
   .portrait { width: 200px; margin: 0 auto; }
+  .intro h1 { margin-bottom: 0; }
   .bio { text-align: left; }
   .links.left { justify-content: center; }
   .news li { grid-template-columns: 1fr; gap: 0; }
-  .vision-text { font-size: 20px; }
+  .intro-chips { justify-content: center; }
+  .pub-card { grid-template-columns: 1fr; gap: 12px; }
+  .pub-thumb.empty { display: none; }
   .site-nav { gap: 14px; }
   .project-grid, .gallery, .gallery.n2, .video-grid, .video-grid.n3 { grid-template-columns: 1fr; }
   .page-title { font-size: 30px; margin-top: 36px; }
