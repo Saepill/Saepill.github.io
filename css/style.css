@@ -122,6 +122,27 @@ h3 { font: 600 15px var(--sans); margin: 20px 0 10px; color: var(--muted); text-
 
 footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0 40px; color: var(--muted); font: 13px var(--sans); text-align: center; }
 
+/* ---------- Home intro ---------- */
+.intro { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: center; padding: 56px 0 40px; }
+.portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow); }
+.intro h1 { margin-bottom: 6px; }
+.intro .affil { margin-bottom: 14px; font-family: var(--sans); font-size: 15px; }
+.bio { margin: 0 0 18px; }
+.links.left { justify-content: flex-start; }
+
+.vision { text-align: center; padding: 36px 0 32px; }
+.vision-label { font: 600 13px var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; }
+.vision-text { font: italic 600 24px/1.4 "Source Serif 4", Georgia, serif; max-width: 640px; margin: 0 auto 18px; color: var(--accent); }
+.vision .chips { justify-content: center; }
+
+.news { list-style: none; padding: 0; margin: 0; }
+.news li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 6px 0; }
+.news .award::before { content: ""; }
+
+#projects .project-grid { gap: 18px; }
+#projects .card .name { font-size: 15px; }
+#projects .card .desc { font-size: 14px; }
+
 /* ---------- Projects grid ---------- */
 .page-title { font: 700 36px/1.2 var(--sans); text-align: center; margin: 48px 0 8px; letter-spacing: -0.02em; }
 .page-sub { text-align: center; color: var(--muted); margin: 0 0 36px; }
@@ -199,6 +220,12 @@ footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0 40
   header.hero { padding-top: 36px; }
   h1 { font-size: 32px; }
   .entry { grid-template-columns: 1fr; gap: 2px; }
+  .intro { grid-template-columns: 1fr; gap: 20px; padding-top: 32px; text-align: center; }
+  .portrait { width: 200px; margin: 0 auto; }
+  .bio { text-align: left; }
+  .links.left { justify-content: center; }
+  .news li { grid-template-columns: 1fr; gap: 0; }
+  .vision-text { font-size: 20px; }
   .site-nav { gap: 14px; }
   .project-grid, .gallery, .gallery.n2, .video-grid, .video-grid.n3 { grid-template-columns: 1fr; }
   .page-title { font-size: 30px; margin-top: 36px; }
