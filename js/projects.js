@@ -15,7 +15,7 @@ const projects = [
     summary: "Founding and directing a virtual idol group from concept to release",
     year: "2022 – 2025",
     tags: ["Virtual Entertainment", "Creative Direction"],
-    award: "Best Project Award (Music), Korea Creative Content Agency (KOCCA), 2024",
+    award: "Best Project Award (Music), Korea Creative Content Agency (KOCCA), 2024 — one of four winners among 24 funded teams (selected from 89 applicants)",
     cover: "images/projects/feel-alive.jpg",
     images: [
       "images/projects/feel-alive.jpg",
@@ -24,15 +24,15 @@ const projects = [
     ],
     facts: [
       ["Role", "Founder &amp; Creative Director"],
-      ["Team", "Five-member production team"],
-      ["Funding", "~$30,000 in KOCCA grants (Content Impact 2022, New Content Academy 2024)"],
+      ["Team", "Five-member interdisciplinary team: two engineers, a composer, and a marketer"],
+      ["Funding", "Approximately 30,000 USD from two competitive national creator-support programs (KOCCA)"],
       ["Releases", "<i>Feel Alive</i>, <i>Wishbowl</i>, <i>Wavelet</i>"]
     ],
     overview: [
-      "- Founded and led a five-member production team for the virtual idol group.",
-      "- Secured ~$30,000 in government grants from KOCCA through Content Impact 2022 and New Content Academy 2024, with follow-on funding as a Best Project.",
-      "- Released three albums and music videos and directed the group's concept and creative production.",
-      "- Presented and exhibited the <i>Wishbowl</i> interactive concert at the New Content Academy Showcase 2024 and Character Licensing Fair 2024 (COEX)."
+      "- Founded and led a five-member interdisciplinary team of two engineers, a composer, and a marketer to develop and produce content for the virtual idol group.",
+      "- Secured approximately 30,000 USD through two competitive national creator-support programs administered by KOCCA under the Ministry of Culture, Sports and Tourism.",
+      "- Directed the end-to-end production of three commercially released albums and accompanying music videos (<i>Feel Alive</i>, <i>Wishbowl</i>, <i>Wavelet</i>), from concept development and content production to distribution and social media promotion.",
+      "- Designed an <a href=\"project.html?id=wishbowl\">immersive exhibition</a> extending the <i>Wishbowl</i> virtual concert to offline audiences through CAVE projection and interactive lightsticks inspired by <a href=\"project.html?id=avatar-concerts\">our virtual avatar concert study</a>; published as a journal article and exhibited at the Character Licensing Fair 2024 (COEX, Seoul)."
     ],
     videos: [
       { id: "mkVMj3ZbYco", caption: "Feel Alive" },
@@ -44,7 +44,7 @@ const projects = [
   {
     id: "wishbowl",
     title: "Wishbowl Interactive Concert",
-    summary: "An immersive interactive concert for the virtual band idol Verse'day",
+    summary: "An immersive exhibition extending the Wishbowl virtual concert to offline audiences",
     year: "2024",
     tags: ["Interactive Concert", "Virtual Entertainment"],
     cover: "images/projects/wishbowl-concert.jpg",
@@ -53,13 +53,13 @@ const projects = [
       "images/projects/wishbowl-mv.jpg"
     ],
     facts: [
-      ["Exhibited", "New Content Academy Showcase 2024<br>Character Licensing Fair 2024 (COEX)"],
+      ["Exhibited", "Character Licensing Fair 2024 (COEX, Seoul)"],
       ["Publication", "<i>JKCGS</i>, 30(3)"],
       ["Authors", "Sebin Lee*, Gyeongjin Kim*, <b>Daye Kim</b>*, and Jungjin Lee"]
     ],
     overview: [
-      "A production case study of the <i>Wishbowl</i> music video and immersive interactive concert of the virtual band idol Verse'day.",
-      "The concert was presented and exhibited at the New Content Academy Showcase 2024 and Character Licensing Fair 2024 (COEX)."
+      "Designed an immersive exhibition extending the <i>Wishbowl</i> virtual concert to offline audiences through CAVE projection and interactive lightsticks inspired by <a href=\"project.html?id=avatar-concerts\">our virtual avatar concert study</a>.",
+      "Published as a journal article and exhibited at the Character Licensing Fair 2024 (COEX, Seoul)."
     ],
     videos: [{ id: "HdHAw4pW0os", caption: "Wishbowl interactive concert" }],
     links: [{ label: "Paper", url: "https://doi.org/10.15701/kcgs.2024.30.3.23" }]
@@ -76,6 +76,7 @@ const projects = [
     ],
     overview: [
       "<i>VTuber's Atelier: The Design Space, Challenges, and Opportunities for VTubing</i> — also the topic of my M.S. thesis.",
+      "Examined VTubers' production setups, creative workflows, and challenges through thematic analysis of semi-structured interviews and content analysis of online materials.",
       "Presented as an oral presentation at CHI 2025, and as an invited presentation at the SIGCHI Korea Invited Papers Workshop at HCI Korea 2026, where it received an Honorable Mention Presentation Award."
     ],
     links: [{ label: "Paper", url: "https://doi.org/10.1145/3706598.3714107" }]
@@ -91,7 +92,8 @@ const projects = [
       ["Authors", "Gyeongjin Kim, Sebin Lee, <b>Daye Kim</b>, Jungjin Lee, and Minju Kim"]
     ],
     overview: [
-      "<i>Bring the VibeOn: Designing a Multimodal Interface for Shared Emotional Experiences in Live-streamed Concerts</i>."
+      "<i>Bring the VibeOn: Designing a Multimodal Interface for Shared Emotional Experiences in Live-streamed Concerts</i>.",
+      "Investigated fans' shared emotions in live-streamed concerts through focus groups."
     ],
     links: [{ label: "Paper", url: "https://doi.org/10.1145/3746027.3755327" }]
   },
@@ -106,7 +108,8 @@ const projects = [
       ["Authors", "Sebin Lee*, <b>Daye Kim</b>*, and Jungjin Lee"]
     ],
     overview: [
-      "<i>The Effects of Viewing Formats and Song Genres on Audience Experiences in Virtual Avatar Concerts</i>."
+      "<i>The Effects of Viewing Formats and Song Genres on Audience Experiences in Virtual Avatar Concerts</i>.",
+      "Investigated how viewing formats and music genres influence audience experiences in virtual avatar concerts through a user study."
     ],
     links: [{ label: "Paper", url: "https://doi.org/10.1145/3581783.3612094" }]
   },
